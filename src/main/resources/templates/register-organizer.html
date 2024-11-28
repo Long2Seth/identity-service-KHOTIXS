@@ -16,35 +16,35 @@
         body, html {
             font-family: 'KoHo', sans-serif;
             height: 100%;
-            overflow: hidden;
+            overflow-x: hidden;
         }
 
         /* Define keyframes for animations */
         @keyframes expandFullScreen {
-            /*0% {*/
-            /*    top: -1700px;*/
-            /*    left: -1180px;*/
-            /*    width: 3544px;*/
-            /*    height: 3267px;*/
-            /*}*/
-            /*100% {*/
-            /*    top: -1700px;*/
-            /*    left: -2580px;*/
-            /*    width: 3544px;*/
-            /*    height: 3267px;*/
-            /*}*/
+            0% {
+                top: -2100px;
+                left: -660px;
+                width: 3544px;
+                height: 3267px;
+            }
+            100% {
+                top: -2100px;
+                left: 760px;
+                width: 3544px;
+                height: 3267px;
+            }
         }
 
         @keyframes reverseExpandFullScreen {
             0% {
                 top: -1700px;
-                left: -2580px;
+                left: 760px;
                 width: 3544px;
                 height: 3267px;
             }
             100% {
                 top: -1700px;
-                left: -1180px;
+                left: -660px;
                 width: 3544px;
                 height: 3267px;
             }
@@ -66,7 +66,8 @@
 <main class=" relative flex flex-col w-full h-[1000px] p-5 lg:p-0 lg:flex-row bg-[#f5f5f5] ">
 
     <!-- Left Section -->
-    <section class=" bg-[#f5f5f5] h-full w-full my-10 px-10 flex justify-center sm:px-20 lg:m-0 lg:p-5 2xl:p-10 lg:flex-col ">
+    <section
+            class="bg-[#f5f5f5] h-full w-full my-10 px-10 flex justify-center sm:px-20 lg:m-0 lg:p-5 2xl:p-10 lg:flex-col lg:items-center lg:justify-start  ">
 
         <section class=" w-full max-w-md sm:max-w-lg lg:max-w-xl lg:mx-auto 2xl:max-w-xl">
 
@@ -79,10 +80,11 @@
                 Login to your Account
             </h2>
             <p class="text-center text-gray-600 text-sm mb-[25px] lg:my-[10px] 2xl:text-sm 2xl:my-[25px]">
-                You can use your phone number or username
+                Create a free account and start buying and selling tickets right away!
             </p>
 
-            <section class="flex flex-row mx-[20px] my-[10px] sm:mx-[40px] lg:mx-[40px] lg:my-[20px] 2xl:mx-[50px] 2xl:my-[25px]">
+            <section
+                    class="flex flex-row mx-[20px] my-[10px] sm:mx-[40px] lg:mx-[40px] lg:my-[20px] 2xl:mx-[50px] 2xl:my-[25px]">
                 <button
                         onclick="triggerReverseAnimation(event, 'register-organizer.html')"
                         class="w-full bg-[#480028] text-white rounded-tl-md rounded-bl-md border-2 border-[#480028] py-3 px-4">
@@ -166,6 +168,21 @@
                             class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:border-[#490028]">
                 </div>
 
+                <!-- Confirm Password -->
+                <div>
+                    <label for="confirm-password" class="block text-sm font-medium text-gray-700">
+                        Confirm Password
+                        <span class="text-red-500">*</span>
+                    </label>
+                    <input
+                            type="password"
+                            id="confirm-password"
+                            name="confirm-password"
+                            placeholder="Username@1234#!" required
+                            class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:border-[#490028]">
+                </div>
+
+
                 <button type="submit"
                         class="w-full bg-[#480028] text-white rounded-md hover:bg-[#480028] focus:outline-none py-3 px-4">
                     Login
@@ -183,8 +200,6 @@
     </section>
 
 
-
-
     <!-- Right Section -->
     <section class=" right-section right-section hidden text-white w-full h-full lg:flex lg:p-5 2xl:p-10 ">
         <div class=" flex flex-col ">
@@ -198,17 +213,35 @@
                     </p>
                 </div>
             </div>
-            <div class="absolute z-10 left-[1050px] bottom-[170px] scale-x-[-1]">
-                <img src="/resources/static/images/Animation-inform.gif" alt="animation" class="h-[300px]">
-            </div>
+            <!--            <div class="absolute z-10 left-[1050px] bottom-[170px] scale-x-[-1]">-->
+            <!--                <img src="/resources/static/images/Animation-inform.gif" alt="animation" class="h-[300px]">-->
+            <!--            </div>-->
         </div>
         <div id="expandable-circle"
-             class="absolute w-[3544px] h-[3267px] bg-[#480028] rounded-[40%] top-[-1800px] lg:left-[450px] xl:left-[520px] 2xl:left-[820px]">
+             class="absolute w-[3544px] h-[3267px] bg-[#480028] rounded-[40%] top-[-2100px] lg:left-[450px] xl:left-[520px] 2xl:left-[-660px]">
         </div>
     </section>
 
 
-
 </main>
+
+<script>
+    window.onload = function () {
+        const animatedDiv = document.getElementById("expandable-circle");
+        animatedDiv.classList.add("animate-expand");
+    };
+
+    function triggerReverseAnimation(event, targetUrl) {
+        event.preventDefault();
+        const animatedDiv = document.getElementById("expandable-circle");
+        animatedDiv.classList.remove("animate-expand");
+        animatedDiv.classList.add("animate-reverse-expand");
+        setTimeout(() => {
+            window.location.href = targetUrl;
+        }, 1000);
+    }
+</script>
+
+</body>
 
 </html>

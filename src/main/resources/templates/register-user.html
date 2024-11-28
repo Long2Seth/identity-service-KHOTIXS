@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Organizer Form</title>
+    <title>Login Form</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
@@ -12,31 +12,25 @@
     <link href="https://fonts.googleapis.com/css2?family=KoHo:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700&display=swap"
           rel="stylesheet">
     <style>
-        html, body {
+        /* Apply the font globally */
+        body, html {
+            font-family: 'KoHo', sans-serif;
             height: 100%;
-            margin: 0;
-            padding: 0;
             overflow-x: hidden;
         }
 
-        main {
-            min-height: 100vh; /* Use viewport height instead of percentage */
-            height: auto; /* Allow content to determine height */
-            overflow-y: auto; /* Enable vertical scrolling */
-            display: flex;
-            flex-direction: column;
-        }
-
+        /* Define keyframes for animations */
         @keyframes expandFullScreen {
+            /*-330px*/
             0% {
-                top: -1700px;
-                left: -440px;
+                top: -2100px;
+                left: -660px;
                 width: 3544px;
                 height: 3267px;
             }
             100% {
-                top: -1700px;
-                left: 940px;
+                top: -2100px;
+                left: 760px;
                 width: 3544px;
                 height: 3267px;
             }
@@ -45,18 +39,19 @@
         @keyframes reverseExpandFullScreen {
             0% {
                 top: -1700px;
-                left: 940px;
+                left: 760px;
                 width: 3544px;
                 height: 3267px;
             }
             100% {
                 top: -1700px;
-                left: -440px;
+                left: -660px;
                 width: 3544px;
                 height: 3267px;
             }
         }
 
+        /* Class to trigger animations */
         .animate-expand {
             animation: expandFullScreen 1s ease-in-out forwards;
         }
@@ -66,138 +61,155 @@
         }
     </style>
 </head>
-<body class="bg-[#f5f5f5] h-screen flex items-center justify-center">
 
-<main class="flex flex-col lg:flex-row w-full h-screen justify-between">
+<body class=" bg-[#f5f5f5] h-screen flex items-center justify-center lg:block ">
+
+<main class=" relative flex flex-col w-full h-[1000px] p-5 lg:p-0 lg:flex-row bg-[#f5f5f5] ">
 
     <!-- Left Section -->
-    <section class="bg-[#f5f5f5] w-full p-10">
-        <div class="max-w-lg w-full ml-[70px] ">
-            <div class="flex justify-center my-[10px]">
+    <section
+            class="bg-[#f5f5f5] h-full w-full my-10 px-10 flex justify-center sm:px-20 lg:m-0 lg:p-5 2xl:p-10 lg:flex-col lg:items-center lg:justify-start  ">
+
+        <section class=" w-full max-w-md sm:max-w-lg lg:max-w-xl lg:mx-auto 2xl:max-w-xl">
+
+            <div class="flex justify-center my-[10px] 2xl:my-[25px]">
                 <img src="/resources/static/images/khotixs_logo.png" alt="KHOTIXS Logo"
-                     class="max-w-[150px] h-[150px]">
+                     class="max-w-[50px] h-[50px]  lg:max-w-[80px] lg:h-[80px] 2xl:max-w-[150px] 2xl:h-[150px]">
             </div>
-            <h2 class="text-2xl font-bold text-gray-800 text-center mb-[25px]">Register to your Account</h2>
-            <p class="text-center text-sm text-gray-600 my-[25px]">
+
+            <h2 class=" text-gray-800 text-center text-lg font-bold my-[5px] lg:text-lg lg:font-bold lg:my-[10px] 2xl:text-2xl 2xl:font-bold 2xl:my-[25px]">
+                Login to your Account
+            </h2>
+            <p class="text-center text-gray-600 text-sm mb-[25px] lg:my-[10px] 2xl:text-sm 2xl:my-[25px]">
                 Create a free account and start buying and selling tickets right away!
             </p>
 
-            <section class="flex flex-row mx-[50px] my-[25px]">
-                <button onclick="triggerReverseAnimation(event,'register-organizer.html')"
-                        class="w-full py-3 px-4 bg-[#ffffff] text-black rounded-tl-md rounded-bl-md border-2">
+            <section
+                    class="flex flex-row mx-[20px] my-[10px] sm:mx-[40px] lg:mx-[40px] lg:my-[20px] 2xl:mx-[50px] 2xl:my-[25px]">
+                <button
+                        onclick="triggerReverseAnimation(event, 'register-organizer.html')"
+                        class="w-full bg-[#ffffff] text-black rounded-tl-md rounded-bl-md border-2 py-3 px-4">
                     Organizer
                 </button>
                 <button
-                        onclick="triggerReverseAnimation(event,'register-user.html')"
-                        class="w-full py-3 px-4 bg-[#480028] text-white rounded-tr-md rounded-br-md border-2 border-[#480028]">
+                        onclick="triggerReverseAnimation(event, 'register-user.html')"
+                        class="w-full bg-[#480028] text-white rounded-tr-md rounded-br-md border-2 border-[#480028] py-3 px-4">
                     Ticket Buyer
                 </button>
             </section>
 
-            <form action="/submit" method="POST" class="space-y-4">
-                <!-- First Name -->
+            <form action="#" method="POST" class="space-y-3">
+                <!-- Firlt Name -->
                 <div>
-                    <label for="company-name" class="block text-sm font-medium text-gray-700">
-                        First Name <span class="text-red-500">*</span>
+                    <label for="company" class="block text-sm font-medium text-gray-700">
+                        First Name
+                        <span class="text-red-500">*</span>
                     </label>
                     <input
                             type="text"
-                            id="company-name"
-                            name="companyName"
-                            placeholder="Enter your first name" required
-                            class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:border-[#480028] ">
+                            id="company"
+                            name="company"
+                            placeholder="Enter your company name" required
+                            class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:border-[#490028]">
                 </div>
+
                 <!-- Last Name -->
                 <div>
-                    <label
-                            for="username"
-                            class="block text-sm font-medium text-gray-700">
-                        Last Name <span class="text-red-500">*</span>
+                    <label for="username" class="block text-sm font-medium text-gray-700">
+                        Last Name
+                        <span class="text-red-500">*</span>
                     </label>
                     <input
                             type="text"
                             id="username"
                             name="username"
-                            placeholder="Enter your last name" required
-                            class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:border-[#480028] ">
+                            placeholder="Enter a username" required
+                            class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:border-[#490028]">
                 </div>
+
                 <!-- Phone Number -->
                 <div>
-                    <label
-                            for="phone-number"
-                            class="block text-sm font-medium text-gray-700">
-                        Phone Number <span class="text-red-500">*</span>
+                    <label for="phone" class="block text-sm font-medium text-gray-700">
+                        Phone Number
+                        <span class="text-red-500">*</span>
                     </label>
                     <input
                             type="tel"
-                            id="phone-number"
-                            name="phoneNumber"
+                            id="phone"
+                            name="phone"
                             placeholder="Enter your phone number" required
-                            class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:border-[#480028] ">
+                            class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:border-[#490028]">
                 </div>
+
                 <!-- Email -->
                 <div>
-                    <label
-                            for="email"
-                            class="block text-sm font-medium text-gray-700">
-                        Email <span class="text-red-500">*</span>
+                    <label for="email" class="block text-sm font-medium text-gray-700">
+                        Email Address
+                        <span class="text-red-500">*</span>
                     </label>
                     <input
                             type="email"
                             id="email"
                             name="email"
-                            placeholder="Enter your email " required
-                            class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:border-[#480028] ">
+                            placeholder="Enter your email" required
+                            class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:border-[#490028]">
                 </div>
+
                 <!-- Password -->
                 <div>
-                    <label
-                            for="password"
-                            class="block text-sm font-medium text-gray-700">
-                        Password <span class="text-red-500">*</span>
+                    <label for="password" class="block text-sm font-medium text-gray-700">
+                        Password
+                        <span class="text-red-500">*</span>
                     </label>
                     <input
                             type="password"
                             id="password"
                             name="password"
                             placeholder="Username@1234#!" required
-                            class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:border-[#480028] ">
+                            class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:border-[#490028]">
                 </div>
 
-                <!-- Submit Button -->
+
+
                 <button type="submit"
-                        class="w-full py-3 px-4 bg-[#480028] text-white rounded-md hover:bg-[#720042] focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                        class="w-full bg-[#480028] text-white rounded-md hover:bg-[#480028] focus:outline-none py-3 px-4">
                     Login
                 </button>
             </form>
 
+
             <p class="mt-6 text-center text-sm text-gray-600">
                 Already Registered? <a href="./index.html"
                                        class="text-[#480028] underline hover:text-indigo-500"
-                                       onclick="triggerReverseAnimation(event,'index.html')">login</a>
+                                       onclick="triggerReverseAnimation(event,'./index.html')">login</a>
             </p>
+
+        </section>
+    </section>
+
+
+    <!-- Right Section -->
+    <section class=" right-section right-section hidden text-white w-full h-full lg:flex lg:p-5 2xl:p-10 ">
+        <div class=" flex flex-col ">
+            <div class="relative z-10 w-full flex justify-center lg:mt-[100px] lg:ml-[50px] xl:ml-3 ">
+                <div>
+                    <h1 class=" font-bold text-center lg:text-3xl lg:mb-9 xl:text-5xl xl:mb-9">WELCOME TO KHOTIXS</h1>
+                    <p class=" text-md lg:text-lg lg:max-w-[450px] lg:ml-0 lg:font-semibold xl:ml-15 2xl:my-[60px] xl:text-2xl xl:max-w-[640px]">
+                        KHOTIXS is an online platform designed to support ticket booking for events of all kinds.<br>
+                        Our website makes it easy to discover upcoming events, book tickets quickly, and access all the
+                        details you need in one place.
+                    </p>
+                </div>
+            </div>
+            <!--            <div class="absolute z-10 left-[1050px] bottom-[170px] scale-x-[-1]">-->
+            <!--                <img src="/resources/static/images/Animation-inform.gif" alt="animation" class="h-[300px]">-->
+            <!--            </div>-->
+        </div>
+        <div id="expandable-circle"
+             class="absolute w-[3544px] h-[3267px] bg-[#480028] rounded-[40%] top-[-2100px] lg:left-[450px] xl:left-[520px] 2xl:left-[-660px]">
         </div>
     </section>
 
-    <!-- Right Section -->
-    <section class="text-white w-full h-full  p-10">
-        <div class="relative z-10 w-full flex justify-center mt-[100px] ">
-            <div>
-                <h1 class="text-5xl font-bold mb-9 text-center">WELCOME TO KHOTIXS</h1>
-                <p class="text-2xl max-w-[640px] font-semibold ml-15 ">
-                    KHOTIXS is an online platform designed to support ticket booking for events of all kinds.<br>
-                    Our website makes it easy to discover upcoming events, book tickets quickly, and access all the
-                    details you need in one place.
-                </p>
-            </div>
-        </div>
-        <div class="absolute z-10 left-[1050px] bottom-[170px] scale-x-[-1]">
-            <img src="/resources/static/images/Animation-inform.gif" alt="animation" class="h-[300px]">
-        </div>
-        <div id="expandable-circle"
-             class="absolute w-[3544px] h-[3267px] bg-[#480028] rounded-[50%] top-[-1700px] lg:left-[450px] xl:left-[520px] 2xl:left-[820px]">
-        </div>
-    </section>
 
 </main>
 
@@ -217,5 +229,7 @@
         }, 1000);
     }
 </script>
+
 </body>
+
 </html>

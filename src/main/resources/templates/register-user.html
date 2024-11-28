@@ -12,10 +12,19 @@
     <link href="https://fonts.googleapis.com/css2?family=KoHo:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700&display=swap"
           rel="stylesheet">
     <style>
-        body, html {
-            font-family: 'KoHo', sans-serif;
+        html, body {
             height: 100%;
-            overflow: hidden; /* Prevent scrolling */
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        main {
+            min-height: 100vh; /* Use viewport height instead of percentage */
+            height: auto; /* Allow content to determine height */
+            overflow-y: auto; /* Enable vertical scrolling */
+            display: flex;
+            flex-direction: column;
         }
 
         @keyframes expandFullScreen {
@@ -74,11 +83,13 @@
             </p>
 
             <section class="flex flex-row mx-[50px] my-[25px]">
-                <button onclick="window.location.href='register-organizer.html'"
+                <button onclick="triggerReverseAnimation(event,'register-organizer.html')"
                         class="w-full py-3 px-4 bg-[#ffffff] text-black rounded-tl-md rounded-bl-md border-2">
                     Organizer
                 </button>
-                <button class="w-full py-3 px-4 bg-[#480028] text-white rounded-tr-md rounded-br-md border-2 border-[#480028]">
+                <button
+                        onclick="triggerReverseAnimation(event,'register-user.html')"
+                        class="w-full py-3 px-4 bg-[#480028] text-white rounded-tr-md rounded-br-md border-2 border-[#480028]">
                     Ticket Buyer
                 </button>
             </section>
@@ -163,11 +174,10 @@
             <p class="mt-6 text-center text-sm text-gray-600">
                 Already Registered? <a href="./index.html"
                                        class="text-[#480028] underline hover:text-indigo-500"
-                                       onclick="triggerReverseAnimation(event)">login</a>
+                                       onclick="triggerReverseAnimation(event,'index.html')">login</a>
             </p>
         </div>
     </section>
-
 
     <!-- Right Section -->
     <section class="text-white w-full h-full  p-10">
@@ -185,31 +195,27 @@
             <img src="/resources/static/images/Animation-inform.gif" alt="animation" class="h-[300px]">
         </div>
         <div id="expandable-circle"
-             class="absolute w-[3544px] h-[3267px] bg-[#480028] rounded-[50%] top-[-1700px] left-[-440px]">
+             class="absolute w-[3544px] h-[3267px] bg-[#480028] rounded-[50%] top-[-1700px] lg:left-[450px] xl:left-[520px] 2xl:left-[820px]">
         </div>
     </section>
+
 </main>
 
 <script>
-    // Trigger initial animation on page load
     window.onload = function () {
         const animatedDiv = document.getElementById("expandable-circle");
         animatedDiv.classList.add("animate-expand");
     };
 
-    // Reverse the animation on login click
-    function triggerReverseAnimation(event) {
-        event.preventDefault(); // Prevent the default link behavior
+    function triggerReverseAnimation(event, targetUrl) {
+        event.preventDefault();
         const animatedDiv = document.getElementById("expandable-circle");
         animatedDiv.classList.remove("animate-expand");
         animatedDiv.classList.add("animate-reverse-expand");
-
-        // Redirect after animation ends
         setTimeout(() => {
-            window.location.href = './index.html';
-        }, 1000); // Match animation duration
+            window.location.href = targetUrl;
+        }, 1000);
     }
 </script>
-
 </body>
 </html>

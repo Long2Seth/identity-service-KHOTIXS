@@ -15,16 +15,16 @@
         /* Apply the font globally */
         body, html {
             font-family: 'KoHo', sans-serif;
-            height: 200vh;
+            height: 130vh;
             overflow-x: hidden;
-            overflow-y: auto;
+            overflow-y: hidden;
         }
 
         /* Define keyframes for animations */
         @keyframes expandFullScreen {
             0% {
                 top: -1800px;
-                left: -1180px;
+                left: -1100px;
                 width: 3544px;
                 height: 3267px;
             }
@@ -45,7 +45,7 @@
             }
             100% {
                 top: -1800px;
-                left: -1180px;
+                left: -1100px;
                 width: 3544px;
                 height: 3267px;
             }
@@ -62,9 +62,9 @@
     </style>
 </head>
 
-<body class="h-[200vh] w-full flex items-center justify-center lg:inline">
+<body class="h-[130vh] w-full flex items-center justify-center lg:inline">
 
-<main class="flex flex-col w-full h-[200vh] p-5 lg:p-0 lg:flex-row bg-[#f5f5f5] lg:bg-[url('/resources/static/images/bg-login.png')] bg-cover bg-center">
+<main class="flex flex-col w-full h-[130vh] p-5 lg:p-0 lg:flex-row bg-[#f5f5f5] lg:bg-[url('/resources/static/images/bg-login.png')] bg-cover bg-center">
     <!-- Left Section -->
     <section class="hidden text-white w-full h-full lg:flex lg:px-10 2xl:p-10 ">
         <div class="flex flex-col">
@@ -78,12 +78,12 @@
                     </p>
                 </div>
             </div>
-            <div class="z-10 lg:ml-[290px] lg:mt-[70px] xl:ml-[400px] 2xl:ml-[530px]">
-                <img src="/resources/static/images/Animation-inform.gif" alt="animation" class="lg:h-[200px] lg:w-[200px]">
-            </div>
+<!--            <div class="z-10 lg:ml-[290px] lg:mt-[0px] xl:ml-[400px] 2xl:ml-[530px]">-->
+<!--                <img src="/resources/static/images/Animation-inform.gif" alt="animation" class="lg:h-[200px] lg:w-[200px]">-->
+<!--            </div>-->
         </div>
         <div id="expandable-circle"
-             class="absolute rounded-[50%] w-[2500px] h-[2500px] bg-[#480028] lg:top-[-1800px] lg:left-[-2955px] xl:left-[-2840px] 2xl:left-[-2900px] ">
+             class="absolute rounded-[50%] w-[3544px] h-[3267px] bg-[#480028] lg:top-[-1800px] lg:left-[-2955px] xl:left-[-2840px] 2xl:left-[-1100px] ">
 
         </div>
     </section>
@@ -91,14 +91,14 @@
     <!-- Right Section -->
     <section class="bg-[#f5f5f5] h-full w-full my-10 px-10 flex sm:px-20 lg:m-0 lg:p-5 2xl:p-10 lg:flex-col lg:items-center  ">
         <section class="w-full max-w-md sm:max-w-lg lg:max-w-xl lg:mx-auto 2xl:max-w-xl">
-            <div class="flex justify-center my-[10px] 2xl:my-[25px]">
+            <div class="flex justify-center my-[10px] 2xl:my-[5px]">
                 <img src="/resources/static/images/khotixs_logo.png" alt="KHOTIXS Logo"
                      class="max-w-[50px] h-[50px] lg:max-w-[80px] lg:h-[80px] 2xl:max-w-[150px] 2xl:h-[150px]">
             </div>
-            <h2 class="text-gray-800 text-center text-lg font-bold my-[5px] lg:text-lg lg:font-bold lg:my-[10px] 2xl:text-2xl 2xl:font-bold 2xl:my-[25px]">
+            <h2 class="text-gray-800 text-center text-lg font-bold my-[5px] lg:text-lg lg:font-bold lg:my-[10px] 2xl:text-2xl 2xl:font-bold 2xl:my-[5px]">
                 Login to your Account
             </h2>
-            <p class="text-center text-gray-600 text-sm mb-[25px] lg:my-[10px] 2xl:text-sm 2xl:my-[25px]">
+            <p class="text-center text-gray-600 text-sm mb-[25px] lg:my-[10px] 2xl:text-sm 2xl:my-[5px]">
                 You can use your phone number or username
             </p>
             <section class="flex flex-row mx-[20px] my-[10px] sm:mx-[40px] lg:mx-[40px] lg:my-[20px] 2xl:mx-[50px] 2xl:my-[25px]">
@@ -133,7 +133,7 @@
                     Login
                 </button>
             </form>
-            <div class="flex items-center justify-center my-3 md:my-6">
+            <div class="flex items-center justify-center my-3 md:my-4">
                 <hr class="flex-grow border-t border-gray-300">
                 <span class="px-4 text-sm text-gray-500">or</span>
                 <hr class="flex-grow border-t border-gray-300">
@@ -141,7 +141,7 @@
             <button class="w-full bg-gray-100 text-black border-[#480028] border-[1px] rounded-md hover:bg-gray-200 outline-none py-3 px-4">
                 Login with Google
             </button>
-            <p class="text-center text-sm text-gray-600 my-3 md:my-6">
+            <p class="text-center text-sm text-gray-600 my-3 md:my-4">
                 Don't have an account?
                 <a href="./register-organizer.html" id="register-link" class="text-[#480028] underline"
                    onclick="triggerReverseAnimation(event, './register-organizer.html')">

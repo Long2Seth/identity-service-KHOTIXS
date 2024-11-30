@@ -9,10 +9,8 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=KoHo:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700&display=swap"
-          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=KoHo:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700&display=swap" rel="stylesheet">
     <style>
-        /* Apply the font globally */
         body, html {
             font-family: 'KoHo', sans-serif;
             height: 130vh;
@@ -20,7 +18,6 @@
             overflow-y: hidden;
         }
 
-        /* Define keyframes for animations */
         @keyframes expandFullScreen {
             0% {
                 top: var(--start-top);
@@ -51,15 +48,13 @@
             }
         }
 
-         /*for validation error*/
         .hidden {
             display: none;
         }
         .error-border {
-            border-color: #ef4444; /* Tailwind red-500 color */
+            border-color: #ef4444;
         }
 
-        /* Class to trigger animations */
         .animate-expand {
             animation: expandFullScreen 1s ease-in-out forwards;
         }
@@ -68,7 +63,6 @@
             animation: reverseExpandFullScreen 1s ease-in-out forwards;
         }
 
-        /* Define custom properties for different screen sizes */
         :root {
             --start-top: -1800px;
             --start-left: -1100px;
@@ -99,7 +93,6 @@
 <body class="h-[130vh] w-full flex items-center justify-center lg:inline">
 
 <main class="flex flex-col w-full h-[130vh] p-5 lg:p-0 lg:flex-row bg-[#f5f5f5] lg:bg-[url('/resources/static/images/bg-login.png')] bg-cover bg-center">
-    <!-- Left Section -->
     <section class="hidden text-white w-full h-full lg:flex lg:px-10 2xl:p-10 ">
         <div class="flex flex-col">
             <div class="relative z-10 w-full flex justify-center lg:mt-[100px] lg:ml-[30px] xl:ml-3">
@@ -119,7 +112,6 @@
         </div>
     </section>
 
-    <!-- Right Section -->
     <section class="bg-[#f5f5f5] h-full w-full my-10 px-10 flex justify-center sm:px-20 lg:m-0 lg:p-5 2xl:p-10 lg:flex-col lg:items-center lg:justify-start  ">
         <section class="w-full max-w-md sm:max-w-lg lg:max-w-xl lg:mx-auto 2xl:max-w-xl">
             <div class="flex justify-center my-[10px] 2xl:my-[5px]">
@@ -132,14 +124,11 @@
             <p class="text-center text-gray-600 text-sm mb-[25px] lg:my-[10px] 2xl:text-sm 2xl:my-[5px]">
                 You can use your phone number or username
             </p>
-            <section
-                    class="flex flex-row mx-[20px] my-[10px] sm:mx-[40px] lg:mx-[40px] lg:my-[20px] 2xl:mx-[50px] 2xl:my-[25px] ">
-                <button
-                        onclick="triggerReverseAnimation(event, 'index.html')"
-                        class="w-full py-3 px-4 bg-[#ffffff] text-black rounded-tl-md rounded-bl-md border-2">
+            <section class="flex flex-row mx-[20px] my-[10px] sm:mx-[40px] lg:mx-[40px] lg:my-[20px] 2xl:mx-[50px] 2xl:my-[25px]">
+                <button onclick="triggerReverseAnimation(event, 'index.html')" class="w-full py-3 px-4 bg-[#ffffff] text-black rounded-tl-md rounded-bl-md border-2">
                     UserName
                 </button>
-                <button class="w-full py-3 px-4 bg-[#480028] text-white rounded-tr-md rounded-br-md border-2 border-[#480028] ">
+                <button class="w-full py-3 px-4 bg-[#480028] text-white rounded-tr-md rounded-br-md border-2 border-[#480028]">
                     Phone Number
                 </button>
             </section>
@@ -162,12 +151,23 @@
                     <p id="password-error" class="text-red-500 text-sm mt-1 hidden">Please enter your password.</p>
                 </div>
                 <div class="flex items-center justify-end">
-                    <a href="./email.html"
-                       onclick="triggerReverseAnimation(event, './email.html')"
-                       class="text-sm text-[#480028] font-normal underline">Forgot password?</a>
+                    <a href="./email.html" onclick="triggerReverseAnimation(event, './email.html')" class="text-sm text-[#480028] font-normal underline">Forgot password?</a>
                 </div>
                 <button type="submit" class="w-full bg-[#480028] text-white rounded-md hover:bg-[#480028] focus:outline-none py-3 px-4">
-                    Login
+                    <span id="button-text">Login</span>
+                    <svg id="loading-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" class="hidden w-5 h-5 ml-2">
+                        <radialGradient id="a8" cx=".66" fx=".66" cy=".3125" fy=".3125" gradientTransform="scale(1.5)">
+                            <stop offset="0" stop-color="#FFFFFF"></stop>
+                            <stop offset=".3" stop-color="#FFFFFF" stop-opacity=".9"></stop>
+                            <stop offset=".6" stop-color="#FFFFFF" stop-opacity=".6"></stop>
+                            <stop offset=".8" stop-color="#FFFFFF" stop-opacity=".3"></stop>
+                            <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"></stop>
+                        </radialGradient>
+                        <circle transform-origin="center" fill="none" stroke="url(#a8)" stroke-width="15" stroke-linecap="round" stroke-dasharray="200 1000" stroke-dashoffset="0" cx="100" cy="100" r="70">
+                            <animateTransform type="rotate" attributeName="transform" calcMode="spline" dur="2s" values="360;0" keyTimes="0;1" keySplines="0 0 1 1" repeatCount="indefinite"></animateTransform>
+                        </circle>
+                        <circle transform-origin="center" fill="none" opacity=".2" stroke="#FFFFFF" stroke-width="15" stroke-linecap="round" cx="100" cy="100" r="70"></circle>
+                    </svg>
                 </button>
             </form>
             <div class="flex items-center justify-center my-3 md:my-4">
@@ -181,10 +181,7 @@
             </button>
             <p class="text-center text-sm text-gray-600 my-3 md:my-4">
                 Don't have an account?
-                <a href="./register-organizer.html" id="register-link" class="text-[#480028] underline"
-                   onclick="triggerReverseAnimation(event, './register-organizer.html')">
-                    Register
-                </a>
+                <a href="./register-organizer.html" id="register-link" class="text-[#480028] underline" onclick="triggerReverseAnimation(event, './register-organizer.html')">Register</a>
             </p>
         </section>
     </section>
@@ -196,11 +193,9 @@
 
         let isValid = true;
 
-        // Static data for validation
         const validPhoneNumber = "012 345 789";
         const validPassword = "Password@123!";
 
-        // Phone number validation
         const phoneNumberInput = document.getElementById('phone-number');
         const phoneNumberError = document.getElementById('phone-number-error');
         const phoneNumberValue = phoneNumberInput.value.trim();
@@ -220,7 +215,6 @@
             phoneNumberInput.classList.remove('error-border');
         }
 
-        // Password validation
         const passwordInput = document.getElementById('password');
         const passwordError = document.getElementById('password-error');
         const passwordValue = passwordInput.value.trim();
@@ -247,35 +241,35 @@
         }
 
         if (isValid) {
-            // Show loading icon and hide button text
             const loginButton = document.querySelector('button[type="submit"]');
-            loginButton.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" class="w-5 h-5 ml-2"><radialGradient id="a8" cx=".66" fx=".66" cy=".3125" fy=".3125" gradientTransform="scale(1.5)"><stop offset="0" stop-color="#FFFFFF"></stop><stop offset=".3" stop-color="#FFFFFF" stop-opacity=".9"></stop><stop offset=".6" stop-color="#FFFFFF" stop-opacity=".6"></stop><stop offset=".8" stop-color="#FFFFFF" stop-opacity=".3"></stop><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"></stop></radialGradient><circle transform-origin="center" fill="none" stroke="url(#a8)" stroke-width="15" stroke-linecap="round" stroke-dasharray="200 1000" stroke-dashoffset="0" cx="100" cy="100" r="70"><animateTransform type="rotate" attributeName="transform" calcMode="spline" dur="2s" values="360;0" keyTimes="0;1" keySplines="0 0 1 1" repeatCount="indefinite"></animateTransform></circle><circle transform-origin="center" fill="none" opacity=".2" stroke="#FFFFFF" stroke-width="15" stroke-linecap="round" cx="100" cy="100" r="70"></circle></svg>';
+            const buttonText = document.getElementById('button-text');
+            const loadingIcon = document.getElementById('loading-icon');
 
-            // Simulate form submission
+            buttonText.classList.add('hidden');
+            loadingIcon.classList.remove('hidden');
+
             setTimeout(() => {
                 alert('Form submitted successfully!');
                 this.submit();
             }, 2000);
         }
     });
-    // Trigger initial animation on page load
+
     window.onload = function () {
         const animatedDiv = document.getElementById("expandable-circle");
         animatedDiv.classList.add("animate-expand");
     };
 
-    // Reverse animation on navigation
     function triggerReverseAnimation(event, targetUrl) {
-        event.preventDefault(); // Prevent immediate navigation
+        event.preventDefault();
 
         const animatedDiv = document.getElementById("expandable-circle");
         animatedDiv.classList.remove("animate-expand");
         animatedDiv.classList.add("animate-reverse-expand");
 
-        // Redirect after animation ends
         setTimeout(() => {
             window.location.href = targetUrl;
-        }, 1000); // Match animation duration
+        }, 1000);
     }
 </script>
 

@@ -3,23 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Organizer Form</title>
+    <title>Login Form</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=KoHo:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700&display=swap"
-          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=KoHo:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700&display=swap" rel="stylesheet">
     <style>
-        /* Apply the font globally */
         body, html {
             font-family: 'KoHo', sans-serif;
-            height: 100%;
+            height: 130vh;
             overflow-x: hidden;
+            overflow-y: hidden;
         }
 
-        /* Define keyframes for animations */
         @keyframes expandFullScreen {
             0% {
                 top: var(--start-top);
@@ -50,7 +48,13 @@
             }
         }
 
-        /* Class to trigger animations */
+        .hidden {
+            display: none;
+        }
+        .error-border {
+            border-color: #ef4444;
+        }
+
         .animate-expand {
             animation: expandFullScreen 1s ease-in-out forwards;
         }
@@ -59,147 +63,42 @@
             animation: reverseExpandFullScreen 1s ease-in-out forwards;
         }
 
-        /* Define custom properties for different screen sizes */
         :root {
-            --start-top: -2100px;
-            --start-left: -660px;
-            --end-top: -2100px;
-            --end-left: 760px;
+            --start-top: -1800px;
+            --start-left: -1100px;
+            --end-top: -1800px;
+            --end-left: -2955px;
         }
 
         @media (min-width: 1024px) {
             :root {
-                --end-left: 550px;
+                --end-left: -2955px;
             }
         }
 
         @media (min-width: 1280px) {
             :root {
-                --end-left: -650px;
+                --end-left: -2840px;
             }
         }
 
         @media (min-width: 1536px) {
             :root {
-                --end-left: 740px;
+                --end-left: -2955px;
             }
         }
     </style>
 </head>
 
-<body class="bg-[#f5f5f5] h-screen flex items-center justify-center lg:block">
+<body class="h-[130vh] w-full flex items-center justify-center lg:inline">
 
-<main class="relative flex flex-col w-full h-[1000px] p-5 lg:p-0 lg:flex-row bg-[#f5f5f5]">
-
-    <!-- Left Section -->
-    <section class="bg-[#f5f5f5] h-full w-full my-10 px-10 flex justify-center sm:px-20 lg:m-0 lg:p-5 2xl:p-10 lg:flex-col lg:items-center lg:justify-start">
-
-        <section class="w-full max-w-md sm:max-w-lg lg:max-w-xl lg:mx-auto 2xl:max-w-xl">
-
-            <div class="flex justify-center my-[10px] 2xl:my-[5px]">
-                <img src="/resources/static/images/khotixs_logo.png" alt="KHOTIXS Logo"
-                     class="max-w-[50px] h-[50px] lg:max-w-[80px] lg:h-[80px] 2xl:max-w-[150px] 2xl:h-[150px]">
-            </div>
-
-            <h2 class="text-gray-800 text-center text-lg font-bold my-[5px] lg:text-lg lg:font-bold lg:my-[10px] 2xl:text-2xl 2xl:font-bold 2xl:my-[25px]">
-                Login to your Account
-            </h2>
-            <p class="text-center text-gray-600 text-sm mb-[25px] lg:my-[10px] 2xl:text-sm 2xl:my-[25px]">
-                Create a free account and start buying and selling tickets right away!
-            </p>
-
-            <section class="flex flex-row mx-[20px] my-[10px] sm:mx-[40px] lg:mx-[40px] lg:my-[20px] 2xl:mx-[50px] 2xl:my-[25px]">
-                <button onclick="triggerReverseAnimation(event, 'register-organizer.html')"
-                        class="w-full bg-[#480028] text-white rounded-tl-md rounded-bl-md border-2 border-[#480028] py-3 px-4">
-                    Organizer
-                </button>
-                <button onclick="triggerReverseAnimation(event, 'register-user.html')"
-                        class="w-full bg-[#ffffff] text-black rounded-tr-md rounded-br-md border-2 py-3 px-4">
-                    Ticket Buyer
-                </button>
-            </section>
-
-            <form action="#" method="POST" class=" space-y-3 lg:space-y-5">
-                <!-- Company Name -->
-                <div>
-                    <label for="company" class="block text-sm font-medium text-gray-700">
-                        Company Name
-                        <span class="text-red-500">*</span>
-                    </label>
-                    <input type="text" id="company" name="company" placeholder="Enter your company name" required
-                           class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:border-[#490028]">
-                </div>
-
-                <!-- Username -->
-                <div>
-                    <label for="username" class="block text-sm font-medium text-gray-700">
-                        Username
-                        <span class="text-red-500">*</span>
-                    </label>
-                    <input type="text" id="username" name="username" placeholder="Enter a username" required
-                           class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:border-[#490028]">
-                </div>
-
-                <!-- Phone Number -->
-                <div>
-                    <label for="phone" class="block text-sm font-medium text-gray-700">
-                        Phone Number
-                        <span class="text-red-500">*</span>
-                    </label>
-                    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required
-                           class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:border-[#490028]">
-                </div>
-
-                <!-- Email -->
-                <div>
-                    <label for="email" class="block text-sm font-medium text-gray-700">
-                        Email Address
-                        <span class="text-red-500">*</span>
-                    </label>
-                    <input type="email" id="email" name="email" placeholder="Enter your email" required
-                           class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:border-[#490028]">
-                </div>
-
-                <!-- Password -->
-                <div>
-                    <label for="password" class="block text-sm font-medium text-gray-700">
-                        Password
-                        <span class="text-red-500">*</span>
-                    </label>
-                    <input type="password" id="password" name="password" placeholder="Username@1234#!" required
-                           class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:border-[#490028]">
-                </div>
-
-                <!-- Confirm Password -->
-                <div>
-                    <label for="confirm-password" class="block text-sm font-medium text-gray-700">
-                        Confirm Password
-                        <span class="text-red-500">*</span>
-                    </label>
-                    <input type="password" id="confirm-password" name="confirm-password" placeholder="Username@1234#!" required
-                           class="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:border-[#490028]">
-                </div>
-
-                <button type="submit" class="w-full bg-[#480028] text-white rounded-md hover:bg-[#480028] focus:outline-none py-3 px-4">
-                    Register
-                </button>
-            </form>
-
-            <p class="mt-6 text-center text-sm text-gray-600">
-                Already Registered? <a href="./index.html" class="text-[#480028] underline hover:text-indigo-500"
-                                       onclick="triggerReverseAnimation(event,'./index.html')">login</a>
-            </p>
-
-        </section>
-    </section>
-
-    <!-- Right Section -->
-    <section class="hidden text-white w-full h-full lg:flex lg:px-10 2xl:p-10">
+<main class="flex flex-col w-full h-[130vh] p-5 lg:p-0 lg:flex-row bg-[#f5f5f5] lg:bg-[url('/resources/static/images/bg-login.png')] bg-cover bg-center">
+    <section class="hidden text-white w-full h-full lg:flex lg:px-10 2xl:p-10 ">
         <div class="flex flex-col">
             <div class="relative z-10 w-full flex justify-center lg:mt-[100px] lg:ml-[30px] xl:ml-3">
                 <div>
-                    <h1 class="font-bold text-center lg:text-3xl lg:mb-9 xl:text-5xl xl:mb-9 xl:ml-10 2xl:m-0">WELCOME TO KHOTIXS</h1>
-                    <p class="text-md lg:text-lg lg:max-w-[400px] lg:ml-20 lg:font-semibold xl:ml-[60px] 2xl:my-[50px] xl:text-xl 2xl:text-2xl xl:max-w-[640px]">
+                    <h1 class="font-bold text-center lg:text-3xl lg:mb-9 xl:text-5xl xl:mb-9">WELCOME TO KHOTIXS</h1>
+                    <p class="text-md lg:text-lg lg:max-w-[450px] lg:ml-0 lg:font-semibold xl:ml-15 2xl:my-[60px] xl:text-xl 2xl:text-2xl xl:max-w-[640px]">
                         KHOTIXS is an online platform designed to support ticket booking for events of all kinds.<br>
                         Our website makes it easy to discover upcoming events, book tickets quickly, and access all the
                         details you need in one place.
@@ -208,13 +107,154 @@
             </div>
         </div>
         <div id="expandable-circle"
-             class="absolute w-[5544px] h-[3267px] bg-[#480028] rounded-bl-[40%] lg:top-[-2100px] lg:left-[-350px] xl:left-[-350px] 2xl:top-[-2100px] 2xl:left-[-660px]">
+             class="absolute rounded-[50%] w-[3544px] h-[3267px] bg-[#480028] lg:top-[-1800px] lg:left-[-2955px] xl:left-[-2840px] 2xl:left-[-1100px] ">
+
         </div>
     </section>
 
+    <section class="bg-[#f5f5f5] h-full w-full my-10 px-10 flex justify-center sm:px-20 lg:m-0 lg:p-5 2xl:p-10 lg:flex-col lg:items-center lg:justify-start  ">
+        <section class="w-full max-w-md sm:max-w-lg lg:max-w-xl lg:mx-auto 2xl:max-w-xl">
+            <div class="flex justify-center my-[10px] 2xl:my-[5px]">
+                <img src="/resources/static/images/khotixs_logo.png" alt="KHOTIXS Logo"
+                     class="max-w-[50px] h-[50px] lg:max-w-[80px] lg:h-[80px] 2xl:max-w-[150px] 2xl:h-[150px]">
+            </div>
+            <h2 class="text-gray-800 text-center text-lg font-bold my-[5px] lg:text-lg lg:font-bold lg:my-[10px] 2xl:text-2xl 2xl:font-bold 2xl:my-[5px]">
+                Login to your Account
+            </h2>
+            <p class="text-center text-gray-600 text-sm mb-[25px] lg:my-[10px] 2xl:text-sm 2xl:my-[5px]">
+                You can use your phone number or username
+            </p>
+            <section class="flex flex-row mx-[20px] my-[10px] sm:mx-[40px] lg:mx-[40px] lg:my-[20px] 2xl:mx-[50px] 2xl:my-[25px]">
+                <button onclick="triggerReverseAnimation(event, 'index.html')" class="w-full py-3 px-4 bg-[#ffffff] text-black rounded-tl-md rounded-bl-md border-2">
+                    UserName
+                </button>
+                <button class="w-full py-3 px-4 bg-[#480028] text-white rounded-tr-md rounded-br-md border-2 border-[#480028]">
+                    Phone Number
+                </button>
+            </section>
+
+            <form id="login-form" action="#" method="POST" class="space-y-3">
+                <div>
+                    <label for="phone-number" class="block text-sm font-medium text-gray-700">
+                        Phone Number <span class="text-red-500">*</span>
+                    </label>
+                    <input type="text" id="phone-number" name="phone-number" placeholder="Enter your phone number"
+                           class="mt-1 block w-full py-3 px-4 border border-gray-300 rounded-md focus:outline-none focus:border-[#480028]">
+                    <p id="phone-number-error" class="text-red-500 text-sm mt-1 hidden">Please enter your phone number.</p>
+                </div>
+                <div>
+                    <label for="password" class="block text-sm font-medium text-gray-700">
+                        Password <span class="text-red-500">*</span>
+                    </label>
+                    <input type="password" id="password" name="password" placeholder="Username@12345#!"
+                           class="mt-1 block w-full py-3 px-4 border border-gray-300 rounded-md focus:outline-none focus:border-[#480028]">
+                    <p id="password-error" class="text-red-500 text-sm mt-1 hidden">Please enter your password.</p>
+                </div>
+                <div class="flex items-center justify-end">
+                    <a href="./email.html" onclick="triggerReverseAnimation(event, './email.html')" class="text-sm text-[#480028] font-normal underline">Forgot password?</a>
+                </div>
+                <button type="submit" class="w-full bg-[#480028] text-white rounded-md hover:bg-[#480028] focus:outline-none py-3 px-4 flex items-center justify-center">
+                    <span id="button-text">Login</span>
+                    <svg id="loading-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" class="hidden w-5 h-5 ml-2">
+                        <radialGradient id="a8" cx=".66" fx=".66" cy=".3125" fy=".3125" gradientTransform="scale(1.5)">
+                            <stop offset="0" stop-color="#FFFFFF"></stop>
+                            <stop offset=".3" stop-color="#FFFFFF" stop-opacity=".9"></stop>
+                            <stop offset=".6" stop-color="#FFFFFF" stop-opacity=".6"></stop>
+                            <stop offset=".8" stop-color="#FFFFFF" stop-opacity=".3"></stop>
+                            <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"></stop>
+                        </radialGradient>
+                        <circle transform-origin="center" fill="none" stroke="url(#a8)" stroke-width="15" stroke-linecap="round" stroke-dasharray="200 1000" stroke-dashoffset="0" cx="100" cy="100" r="70">
+                            <animateTransform type="rotate" attributeName="transform" calcMode="spline" dur="2s" values="360;0" keyTimes="0;1" keySplines="0 0 1 1" repeatCount="indefinite"></animateTransform>
+                        </circle>
+                        <circle transform-origin="center" fill="none" opacity=".2" stroke="#FFFFFF" stroke-width="15" stroke-linecap="round" cx="100" cy="100" r="70"></circle>
+                    </svg>
+                </button>
+            </form>
+            <div class="flex items-center justify-center my-3 md:my-4">
+                <hr class="flex-grow border-t border-gray-300">
+                <span class="px-4 text-sm text-gray-500">or</span>
+                <hr class="flex-grow border-t border-gray-300">
+            </div>
+            <button class="w-full bg-gray-100 text-black border-[#480028] border-[1px] rounded-md hover:bg-gray-200 outline-none py-3 px-4">
+                <img src="/resources/static/images/google-icon-logo.svg" alt="Google Logo" class="inline-block w-5 h-5 mr-2">
+                Login with Google
+            </button>
+            <p class="text-center text-sm text-gray-600 my-3 md:my-4">
+                Don't have an account?
+                <a href="./register-organizer.html" id="register-link" class="text-[#480028] underline" onclick="triggerReverseAnimation(event, './register-organizer.html')">Register</a>
+            </p>
+        </section>
+    </section>
 </main>
 
 <script>
+    document.getElementById('login-form').addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        let isValid = true;
+
+        const validPhoneNumber = "012 345 789";
+        const validPassword = "Password@123!";
+
+        const phoneNumberInput = document.getElementById('phone-number');
+        const phoneNumberError = document.getElementById('phone-number-error');
+        const phoneNumberValue = phoneNumberInput.value.trim();
+
+        if (phoneNumberValue === "") {
+            phoneNumberError.textContent = 'Please enter your phone number.';
+            phoneNumberError.classList.remove('hidden');
+            phoneNumberInput.classList.add('error-border');
+            isValid = false;
+        } else if (phoneNumberValue !== validPhoneNumber) {
+            phoneNumberError.textContent = 'Invalid phone number.';
+            phoneNumberError.classList.remove('hidden');
+            phoneNumberInput.classList.add('error-border');
+            isValid = false;
+        } else {
+            phoneNumberError.classList.add('hidden');
+            phoneNumberInput.classList.remove('error-border');
+        }
+
+        const passwordInput = document.getElementById('password');
+        const passwordError = document.getElementById('password-error');
+        const passwordValue = passwordInput.value.trim();
+        const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z\d\s]).{8,}$/;
+
+        if (passwordValue === "") {
+            passwordError.textContent = 'Please enter your password.';
+            passwordError.classList.remove('hidden');
+            passwordInput.classList.add('error-border');
+            isValid = false;
+        } else if (!passwordPattern.test(passwordValue)) {
+            passwordError.textContent = 'Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one digit, and one special character.';
+            passwordError.classList.remove('hidden');
+            passwordInput.classList.add('error-border');
+            isValid = false;
+        } else if (passwordValue !== validPassword) {
+            passwordError.textContent = 'Incorrect password. Please try again.';
+            passwordError.classList.remove('hidden');
+            passwordInput.classList.add('error-border');
+            isValid = false;
+        } else {
+            passwordError.classList.add('hidden');
+            passwordInput.classList.remove('error-border');
+        }
+
+        if (isValid) {
+            const loginButton = document.querySelector('button[type="submit"]');
+            const buttonText = document.getElementById('button-text');
+            const loadingIcon = document.getElementById('loading-icon');
+
+            buttonText.classList.add('hidden');
+            loadingIcon.classList.remove('hidden');
+
+            setTimeout(() => {
+                alert('Form submitted successfully!');
+                this.submit();
+            }, 2000);
+        }
+    });
+
     window.onload = function () {
         const animatedDiv = document.getElementById("expandable-circle");
         animatedDiv.classList.add("animate-expand");
@@ -222,9 +262,11 @@
 
     function triggerReverseAnimation(event, targetUrl) {
         event.preventDefault();
+
         const animatedDiv = document.getElementById("expandable-circle");
         animatedDiv.classList.remove("animate-expand");
         animatedDiv.classList.add("animate-reverse-expand");
+
         setTimeout(() => {
             window.location.href = targetUrl;
         }, 1000);

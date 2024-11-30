@@ -9,8 +9,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=KoHo:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700&display=swap"
-          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=KoHo:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700&display=swap" rel="stylesheet">
     <style>
         /* Apply the font globally */
         body, html {
@@ -85,6 +84,14 @@
                 --end-left: -2955px;
             }
         }
+
+        .hidden {
+            display: none;
+        }
+
+        .error-border {
+            border-color: #ef4444; /* Tailwind red-500 color */
+        }
     </style>
 </head>
 
@@ -123,13 +130,14 @@
             </h2>
             <p class="text-center text-gray-600 text-sm mb-[25px] lg:my-[10px] 2xl:text-sm 2xl:my-[5px] px-[50px]">
                 Enter the email address associated with your account and we'll email you a link to reset your password.            </p>
-            <form action="#" method="POST" class="space-y-5">
+            <form id="reset-password-form" action="#" method="POST" class="space-y-5">
                 <div>
                     <label for="email" class="block text-sm font-medium text-gray-700">
                         Email <span class="text-red-500">*</span>
                     </label>
-                    <input type="email" id="email" name="email" placeholder="Enter your email" required
+                    <input type="email" id="email" name="email" placeholder="Enter your email"
                            class="mt-1 block w-full py-3 px-4 border border-gray-300 rounded-md focus:outline-none focus:border-[#480028]">
+                    <p id="email-error" class="hidden text-red-500 text-sm mt-1">Please enter a valid email address.</p>
                 </div>
 
                 <button type="submit" class="w-full bg-[#480028] text-white rounded-md hover:bg-[#480028] focus:outline-none py-3 px-4">
@@ -142,6 +150,30 @@
 </main>
 
 <script>
+    document.getElementById('reset-password-form').addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        let isValid = true;
+
+        // Email validation
+        const emailInput = document.getElementById('email');
+        const emailError = document.getElementById('email-error');
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(emailInput.value.trim())) {
+            emailError.classList.remove('hidden');
+            emailInput.classList.add('error-border');
+            isValid = false;
+        } else {
+            emailError.classList.add('hidden');
+            emailInput.classList.remove('error-border');
+        }
+
+        if (isValid) {
+            alert('Email is valid!');
+            this.submit();
+        }
+    });
+
     // Trigger initial animation on page load
     window.onload = function () {
         const animatedDiv = document.getElementById("expandable-circle");

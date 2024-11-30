@@ -23,14 +23,14 @@
         /* Define keyframes for animations */
         @keyframes expandFullScreen {
             0% {
-                top: -1800px;
-                left: -1100px;
+                top: var(--start-top);
+                left: var(--start-left);
                 width: 3544px;
                 height: 3267px;
             }
             100% {
-                top: -1800px;
-                left: -2955px;
+                top: var(--end-top);
+                left: var(--end-left);
                 width: 3544px;
                 height: 3267px;
             }
@@ -38,17 +38,25 @@
 
         @keyframes reverseExpandFullScreen {
             0% {
-                top: -1800px;
-                left: -2955px;
+                top: var(--end-top);
+                left: var(--end-left);
                 width: 3544px;
                 height: 3267px;
             }
             100% {
-                top: -1800px;
-                left: -1100px;
+                top: var(--start-top);
+                left: var(--start-left);
                 width: 3544px;
                 height: 3267px;
             }
+        }
+
+         /*for validation error*/
+        .hidden {
+            display: none;
+        }
+        .error-border {
+            border-color: #ef4444; /* Tailwind red-500 color */
         }
 
         /* Class to trigger animations */
@@ -58,6 +66,32 @@
 
         .animate-reverse-expand {
             animation: reverseExpandFullScreen 1s ease-in-out forwards;
+        }
+
+        /* Define custom properties for different screen sizes */
+        :root {
+            --start-top: -1800px;
+            --start-left: -1100px;
+            --end-top: -1800px;
+            --end-left: -2955px;
+        }
+
+        @media (min-width: 1024px) {
+            :root {
+                --end-left: -2955px;
+            }
+        }
+
+        @media (min-width: 1280px) {
+            :root {
+                --end-left: -2840px;
+            }
+        }
+
+        @media (min-width: 1536px) {
+            :root {
+                --end-left: -2955px;
+            }
         }
     </style>
 </head>
@@ -78,9 +112,6 @@
                     </p>
                 </div>
             </div>
-<!--            <div class="z-10 lg:ml-[290px] lg:mt-[0px] xl:ml-[400px] 2xl:ml-[530px]">-->
-<!--                <img src="/resources/static/images/Animation-inform.gif" alt="animation" class="lg:h-[200px] lg:w-[200px]">-->
-<!--            </div>-->
         </div>
         <div id="expandable-circle"
              class="absolute rounded-[50%] w-[3544px] h-[3267px] bg-[#480028] lg:top-[-1800px] lg:left-[-2955px] xl:left-[-2840px] 2xl:left-[-1100px] ">
@@ -112,50 +143,40 @@
                     Phone Number
                 </button>
             </section>
-            <form action="#" method="POST" class="space-y-4">
-                <!-- Password -->
+
+            <form id="login-form" action="#" method="POST" class="space-y-3">
                 <div>
-                    <label
-                            for="number"
-                            class="block text-sm font-medium text-gray-700">
-                        Phone Number
-                        <span class=" text-red-500 ">*</span>
+                    <label for="phone-number" class="block text-sm font-medium text-gray-700">
+                        Phone Number <span class="text-red-500">*</span>
                     </label>
-                    <input
-                            type="number"
-                            id="number"
-                            name="number"
-                            placeholder="Enter your phone number" required
-                            class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[#480028]">
+                    <input type="text" id="phone-number" name="phone-number" placeholder="Enter your phone number"
+                           class="mt-1 block w-full py-3 px-4 border border-gray-300 rounded-md focus:outline-none focus:border-[#480028]">
+                    <p id="phone-number-error" class="text-red-500 text-sm mt-1 hidden">Please enter your phone number.</p>
                 </div>
                 <div>
-                    <label
-                            for="password"
-                            class="block text-sm font-medium text-gray-700">
+                    <label for="password" class="block text-sm font-medium text-gray-700">
                         Password <span class="text-red-500">*</span>
                     </label>
-                    <input
-                            type="password"
-                            id="password"
-                            name="password"
-                            placeholder="Username@12345#!" required
-                            class="mt-1 block w-full py-3 px-4 border border-gray-300 rounded-md focus:outline-none focus:border-[#480028]">
+                    <input type="password" id="password" name="password" placeholder="Username@12345#!"
+                           class="mt-1 block w-full py-3 px-4 border border-gray-300 rounded-md focus:outline-none focus:border-[#480028]">
+                    <p id="password-error" class="text-red-500 text-sm mt-1 hidden">Please enter your password.</p>
                 </div>
                 <div class="flex items-center justify-end">
-                    <a href="#" class="text-sm text-[#480028] font-normal underline">Forgot password?</a>
+                    <a href="./email.html"
+                       onclick="triggerReverseAnimation(event, './email.html')"
+                       class="text-sm text-[#480028] font-normal underline">Forgot password?</a>
                 </div>
-                <button type="submit"
-                        class="w-full bg-[#480028] text-white rounded-md hover:bg-[#480028] focus:outline-none py-3 px-4">
+                <button type="submit" class="w-full bg-[#480028] text-white rounded-md hover:bg-[#480028] focus:outline-none py-3 px-4">
                     Login
                 </button>
             </form>
-
             <div class="flex items-center justify-center my-3 md:my-4">
                 <hr class="flex-grow border-t border-gray-300">
                 <span class="px-4 text-sm text-gray-500">or</span>
                 <hr class="flex-grow border-t border-gray-300">
             </div>
             <button class="w-full bg-gray-100 text-black border-[#480028] border-[1px] rounded-md hover:bg-gray-200 outline-none py-3 px-4">
+                <img src="/resources/static/images/google-icon-logo.svg" alt="Google Logo" class="inline-block w-5 h-5 mr-2">
                 Login with Google
             </button>
             <p class="text-center text-sm text-gray-600 my-3 md:my-4">
@@ -170,6 +191,73 @@
 </main>
 
 <script>
+    document.getElementById('login-form').addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        let isValid = true;
+
+        // Static data for validation
+        const validPhoneNumber = "012 345 789";
+        const validPassword = "Password@123!";
+
+        // Phone number validation
+        const phoneNumberInput = document.getElementById('phone-number');
+        const phoneNumberError = document.getElementById('phone-number-error');
+        const phoneNumberValue = phoneNumberInput.value.trim();
+
+        if (phoneNumberValue === "") {
+            phoneNumberError.textContent = 'Please enter your phone number.';
+            phoneNumberError.classList.remove('hidden');
+            phoneNumberInput.classList.add('error-border');
+            isValid = false;
+        } else if (phoneNumberValue !== validPhoneNumber) {
+            phoneNumberError.textContent = 'Invalid phone number.';
+            phoneNumberError.classList.remove('hidden');
+            phoneNumberInput.classList.add('error-border');
+            isValid = false;
+        } else {
+            phoneNumberError.classList.add('hidden');
+            phoneNumberInput.classList.remove('error-border');
+        }
+
+        // Password validation
+        const passwordInput = document.getElementById('password');
+        const passwordError = document.getElementById('password-error');
+        const passwordValue = passwordInput.value.trim();
+        const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z\d\s]).{8,}$/;
+
+        if (passwordValue === "") {
+            passwordError.textContent = 'Please enter your password.';
+            passwordError.classList.remove('hidden');
+            passwordInput.classList.add('error-border');
+            isValid = false;
+        } else if (!passwordPattern.test(passwordValue)) {
+            passwordError.textContent = 'Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one digit, and one special character.';
+            passwordError.classList.remove('hidden');
+            passwordInput.classList.add('error-border');
+            isValid = false;
+        } else if (passwordValue !== validPassword) {
+            passwordError.textContent = 'Incorrect password. Please try again.';
+            passwordError.classList.remove('hidden');
+            passwordInput.classList.add('error-border');
+            isValid = false;
+        } else {
+            passwordError.classList.add('hidden');
+            passwordInput.classList.remove('error-border');
+        }
+
+        if (isValid) {
+            // Show loading icon and hide button text
+            const loginButton = document.querySelector('button[type="submit"]');
+            loginButton.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" class="w-5 h-5 ml-2"><radialGradient id="a8" cx=".66" fx=".66" cy=".3125" fy=".3125" gradientTransform="scale(1.5)"><stop offset="0" stop-color="#FFFFFF"></stop><stop offset=".3" stop-color="#FFFFFF" stop-opacity=".9"></stop><stop offset=".6" stop-color="#FFFFFF" stop-opacity=".6"></stop><stop offset=".8" stop-color="#FFFFFF" stop-opacity=".3"></stop><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"></stop></radialGradient><circle transform-origin="center" fill="none" stroke="url(#a8)" stroke-width="15" stroke-linecap="round" stroke-dasharray="200 1000" stroke-dashoffset="0" cx="100" cy="100" r="70"><animateTransform type="rotate" attributeName="transform" calcMode="spline" dur="2s" values="360;0" keyTimes="0;1" keySplines="0 0 1 1" repeatCount="indefinite"></animateTransform></circle><circle transform-origin="center" fill="none" opacity=".2" stroke="#FFFFFF" stroke-width="15" stroke-linecap="round" cx="100" cy="100" r="70"></circle></svg>';
+
+            // Simulate form submission
+            setTimeout(() => {
+                alert('Form submitted successfully!');
+                this.submit();
+            }, 2000);
+        }
+    });
     // Trigger initial animation on page load
     window.onload = function () {
         const animatedDiv = document.getElementById("expandable-circle");
